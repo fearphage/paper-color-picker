@@ -7,7 +7,7 @@ Material Design: Color picker inspired by <a href="http://www.google.com/design/
 Example:
 
     <paper-color-picker id="picker"></paper-color-picker>
-    
+
 and to open the dialog
 
     this.$.picker.open();
@@ -28,7 +28,7 @@ and to open the dialog
 
 <style>
   html /deep/ .color-picker-dialog::shadow #scroller {
-    
+
     padding:0px;
   }
 </style>
@@ -38,7 +38,7 @@ and to open the dialog
       width:200px;
       height:200px;
     }
-    
+
     #container {
       margin-top: 0px;
       padding: 0px;
@@ -48,12 +48,12 @@ and to open the dialog
       right:0px;
       bottom:0px;*/
     }
-    
+
     #preview {
       padding: 0px;
       position: relative;
     }
-    
+
     paper-slider {
       width:100%;
     }
@@ -190,7 +190,7 @@ and to open the dialog
   </style>
   <template>
 
-  <paper-dialog id="dialog" 
+  <paper-dialog id="dialog"
                 entry-animation="scale-up-animation"
                 exit-animation="fade-out-animation"
                 with-backdrop
@@ -485,13 +485,13 @@ and to open the dialog
                 color: undefined,
                 distance: Infinity
               };
-              colors.forEach((color) => {
+              colors.forEach(function(color) {
                 var distance = Math.sqrt(Math.pow(this.immediateColor['red']-color.rgb[0],2)+Math.pow(this.immediateColor['green']-color.rgb[1],2)+Math.pow(this.immediateColor['blue']-color.rgb[2],2));
                 if(distance < closest.distance){
                   closest.color = color;
                   closest.distance = distance;
                 }
-              });
+              }.bind(this));
               this.immediateColorAsString = closest.color.title;
 
               var luminance = Math.max(this._calculateLuminance.apply(this, closest.color.rgb), Math.min(1,1-this.immediateColor.alpha+0.2));
